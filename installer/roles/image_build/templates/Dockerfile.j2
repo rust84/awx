@@ -68,7 +68,7 @@ ADD requirements/requirements_ansible.txt \
     requirements/requirements_tower_uninstall.txt \
     requirements/requirements_git.txt \
     /tmp/requirements/
-RUN cd /tmp && VENV_BASE="/var/lib/awx/venv" make requirements_awx requirements_ansible_py3
+RUN cd /tmp && VENV_BASE="/var/lib/awx/venv" make requirements_awx requirements_ansible_py3 requirements_custom
 
 RUN dnf -y remove *-devel \
   gcc \

@@ -172,6 +172,11 @@ virtualenv_awx:
 		fi; \
 	fi
 
+requirements_custom:
+	mkdir -p /opt/my-envs
+	virtualenv /opt/my-envs/my-custom-env
+	/opt/my-envs/my-custom-env/bin/pip install psutil hvac
+
 # --ignore-install flag is not used because *.txt files should specify exact versions
 requirements_ansible: virtualenv_ansible
 	if [[ "$(PIP_OPTIONS)" == *"--no-index"* ]]; then \
@@ -211,7 +216,7 @@ requirements_awx: virtualenv_awx
 requirements_awx_dev:
 	$(VENV_BASE)/awx/bin/pip install -r requirements/requirements_dev.txt
 
-requirements: requirements_ansible requirements_awx
+requirements: requirements_ansible requirements_awx requirements_custom
 
 requirements_dev: requirements_awx requirements_ansible_py3 requirements_awx_dev requirements_ansible_dev
 

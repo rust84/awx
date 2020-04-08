@@ -18,17 +18,17 @@ kubernetes_task_image: "{{ tower_package_name | default('ansible/awx_task') }}"
 kubernetes_web_version: "{{ tower_package_version | default(dockerhub_version) }}"
 kubernetes_web_image: "{{ tower_package_name | default('ansible/awx_web') }}"
 
-web_mem_request: 1
+web_mem_request: 0.25
 web_cpu_request: 500
 
-task_mem_request: 2
+task_mem_request: 0.25
 task_cpu_request: 1500
 
-rabbitmq_mem_request: 2
+rabbitmq_mem_request: 0.25
 rabbitmq_cpu_request: 500
 
 memcached_hostname: localhost
-memcached_mem_request: 1
+memcached_mem_request: 0.25
 memcached_cpu_request: 500
 
 kubernetes_rabbitmq_version: "3.7.21"
